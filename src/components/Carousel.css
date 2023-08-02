@@ -13,5 +13,5 @@
 }
 
 .carousel-text{
-    font-size: calc(12px + 1*(100vw - 300px)/(1600-300));
+    font-size: calc(12px + 1*(100vw - 300px)/(1600 - 300));
 }
