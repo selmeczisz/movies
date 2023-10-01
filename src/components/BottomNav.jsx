@@ -12,10 +12,11 @@ import { useLocation } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
 import SearchIcon from '@mui/icons-material/Search';
+import PersonIcon from '@mui/icons-material/Person';
 
 const useStyles= makeStyles({
   root:{
-    width:320,
+    width:390,
     position: 'fixed',
     bottom: 0,
     zIndex:100,
@@ -55,7 +56,13 @@ export const  BottomNav=()=> {
         component={NavLink}
         value='/search'
         to='/search'/>
+
+      <BottomNavigationAction label="Actors" icon={<PersonIcon />} 
+        component={NavLink}
+        value='/actors'
+        to='/actors'/>
       </BottomNavigation>
+
     </Box>
   );
 }

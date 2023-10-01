@@ -12,21 +12,21 @@ const responsive={
     1024:{items:7},
 }
 
-export const Carousel = ({type,id}) => {
+export const PersonCarousel = ({id}) => {
 
     //console.log('carousel: ' ,type,id);
 
-    const urlCredits =`https://api.themoviedb.org/3/${type}/${id}/credits?api_key=${import.meta.env.VITE_API_KEY}` 
-    const {data, status} = useQuery(['credits', (urlCredits || urlActorsCredits)], getData)
+    const urlCredits =`https://api.themoviedb.org/3/person/${id}/credits?api_key=${import.meta.env.VITE_API_KEY}` 
+    const {data, status} = useQuery(['credits', (urlCredits)], getData)
 
     status=='success' && console.log(data.cast);
 
     const items=status=='success' ?  
             data.cast.map(obj=>(
                 <div className='carousel-item'>
-                    <img className="carousel-img" src={obj.profile_path ? img_300+obj.profile_path  : noPicture} alt={obj?.name} 
+                    <img className="carousel-img" src={obj.poster_path ? img_300+obj.poster_path  : noPicture} alt={obj?.title} 
                     onDragStart={handleDragStart} />
-                    <b className='carousel-text'>{obj?.name}</b>
+                    <b className='carousel-text'>{obj?.title}</b>
                 </div>
             ))
             : []

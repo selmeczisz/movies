@@ -9,6 +9,7 @@ import {getData, imgUnavailable, img_500} from '../util'
 import './ContentModal.css'
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import { Carousel } from './Carousel';
+import { LongText } from './LongText';
 
 const style = {
   position: 'absolute',
@@ -28,7 +29,7 @@ const style = {
 export const ContentModal=({children, type, id})=> {
   const [open, setOpen] = React.useState(false);
 
-  const urlDetails =`https://api.themoviedb.org/3/${type}/${id}?api_key=${import.meta.env.VITE_API_KEY}`
+  const urlDetails =`https://api.themoviedb.org/3/${type}/${id}?api_key=${import.meta.env.VITE_API_KEY}` || `https://api.themoviedb.org/3/person/${id}?api_key=${import.meta.env.VITE_API_KEY}`
     const {data, status} = useQuery(['details', urlDetails], getData)
 
     const urlVideos =`https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${import.meta.env.VITE_API_KEY}`
@@ -65,7 +66,7 @@ export const ContentModal=({children, type, id})=> {
             <Box sx={{display:'flex', flexDirection:'column'}}>
                 <div><b>{data?.name || data?.title}</b> ({data?.release_date || data?.first_air_date})</div>
                 <div className='tagline'><i>{data.tagline}</i></div>
-                <div className='overview'>{data.overview}</div>
+                <div className='overview'><LongText text={data.overview}/></div>
             </Box>
            </div>
            }

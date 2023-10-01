@@ -3,7 +3,6 @@
     box-sizing: border-box;
 }
 
-
 .app{
     width: 100vw;
     min-height: 100vh;
@@ -42,6 +41,7 @@ margin-bottom:4rem;
     }
 
  .content-pagination li button{
+    color:white;
     margin: 0 !important;
-    color:white
+
  }   
