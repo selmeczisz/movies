@@ -28,8 +28,6 @@ const handleChangeType=(e,newValue)=>{
 setType(newValue)
 }
 
-//console.log(searchText, type);
-
   return (
     <div>
 <ThemeProvider theme={darkTheme}>
@@ -43,11 +41,12 @@ setType(newValue)
         <Button variant='contained' onClick={()=>setFetchData(true)}>
           <SearchIcon/>
         </Button>
-    </div>
-    <Tabs value={type} textColor='primary' centered indicatorColor='primary' onChange={handleChangeType}>
-      <Tab label="Search Movies"/>
+    </div >
+    <Tabs  value={type} textColor='primary' centered indicatorColor='primary' onChange={handleChangeType}>
+      <Tab  label="Search Movies"/>
       <Tab label="Search TV Series"/>
     </Tabs>
+    
     </ThemeProvider>
     {fetchData && <SearchResults searchText={searchText} type={type ? 'tv' : 'movie'}/>}
 

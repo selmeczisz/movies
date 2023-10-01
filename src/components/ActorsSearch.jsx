@@ -28,7 +28,7 @@ const handleChangeText=(e)=>{
         <div   style={{display:'flex', maxWidth:'300px', justifyContent:'center', margin:"15px auto"}}>
     
             <TextField 
-            label="Search for an actor"
+            label="Actor search"
             variant='filled'
             onChange={handleChangeText}
             />

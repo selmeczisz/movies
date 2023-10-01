@@ -11,7 +11,7 @@ export const MoviesPage = () => {
 
   return (
     <>
-    <h3>Movies</h3>
+    <h2>Movies</h2>
     <div className='content'>
       <Genres type='movie' setUrlForGenre={setUrlForGenre}/>
       <Movies urlForGenre={urlForGenre}/>

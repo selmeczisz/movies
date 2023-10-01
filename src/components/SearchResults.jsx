@@ -9,7 +9,7 @@ export const SearchResults = ({searchText, type}) => {
    // console.log(searchText, type);
     const [page, setPage] = useState(1)
     const urlSearch=`https://api.themoviedb.org/3/search/${type}?api_key=${import.meta.env.VITE_API_KEY}&include_adult=false&query=${searchText}&page=${page}`
-    const {data, status} = useQuery(['searchedItems', urlSearch],getData)
+    const {data, status, isError, isLoading} = useQuery(['searchedItems', urlSearch],getData)
     status=='success' && console.log(data.results);
 
    return (
@@ -25,10 +25,11 @@ export const SearchResults = ({searchText, type}) => {
         vote={obj.vote_average}
         /> 
      ))
-        : <div>No {type} found</div> 
+
+        : (isLoading ? <div>Loading...</div> :<div>No {type} found</div>)
     
     }
-             {status=='success' &&  <ContentPagination page={page} setPage={setPage} numOfPages={data.total_pages>500 ? 500 : data.total_pages}/>}
+         {status == 'success' && data.results.length > 0 && <ContentPagination page={page} setPage={setPage} numOfPages={data.total_pages > 500 ? 500 : data.total_pages} />}
 
 
     </div>  )

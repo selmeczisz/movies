@@ -16,14 +16,13 @@ export const Trendings = () => {
 if(isLoading)
   return <div>Loading...</div>
 if(isError)
-return <div>Error while fetching data</div>
+  return <div>Error while fetching data</div>
 
-status=='success' && console.log(data.results, data.total_pages)
 
   return (
     <>    
     
-    <h3>Trendings</h3>
+    <h2>Trendings</h2>
     <div className="content">
       {status=='success' && data.results.map(obj=>(
         <SingleContent 

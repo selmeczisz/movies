@@ -10,7 +10,7 @@ export const ActorsResults = ({ searchText }) => {
   
    const [page, setPage] = useState(1)
    const urlActorsSearch = `https://api.themoviedb.org/3/search/person?api_key=${import.meta.env.VITE_API_KEY}&include_adult=false&query=${searchText}&page=${page}`
-   const { data, status } = useQuery(['searchedItems', urlActorsSearch], getData)
+   const { data, status, isError, isLoading } = useQuery(['searchedItems', urlActorsSearch], getData)
    status == 'success' && console.log(data.results);
 
    return (
@@ -25,10 +25,10 @@ export const ActorsResults = ({ searchText }) => {
                type={obj.known_for_department}
             />
          ))
-            : <div>No actor found</div>
+            : (isLoading ? <div>Loading...</div> :<div>No actor found</div>)
 
          }
-         {status == 'success' && <ContentPagination page={page} setPage={setPage} numOfPages={data.total_pages > 500 ? 500 : data.total_pages} />}
+         {status == 'success' && data.results.length > 0 && <ContentPagination page={page} setPage={setPage} numOfPages={data.total_pages > 500 ? 500 : data.total_pages} />}
 
 
       </div>)

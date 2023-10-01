@@ -11,7 +11,7 @@ export const SeriesPage = () => {
 
   return (
     <>
-    <h3>Series</h3>
+    <h2>Series</h2>
     <div className='content'>
       <Genres type='tv' setUrlForGenre={setUrlForGenre}/>
       <Series urlForGenre={urlForGenre}/>
